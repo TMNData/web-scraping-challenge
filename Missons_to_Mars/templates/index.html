@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+
+mars_data = {
+  "News_Title": web_title,
+  "New_abstract":web_body,
+  "featured_image_url":featured_image_url,
+  "Mars_Weather":mars_weather,
+  "Mars_Fact": html_mars_fact,
+  "Mars_Hemisphere": hemisphere_image_urls
+
+
+<body style="font-family: Helvetica, sans-serif;">
+  <div class="container-fluid mb-3">
+    <div class="jumbotron text-center">
+      <h1><strong>Mission To Mars</strong></h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New  Data</a></p>
+          </div>
+            <div class="container mb-5 mt-5 pb-5">
+                <div class="row">
+                  <h2>Latest Mars News</h2>
+                  <h4>{{mars_data.News_Title}}</h3>
+                  <p>{{mars_data.New_abstract}}</p>
+                </div>
+                <div class="col-md-8 mb-5 mt-5">
+                  <h3>Featured Mars Image</h3>
+                  <img src="{{mars_data.featured_image_url}}" alt="Featured Image Mars" height="600" width="600">
+                </div>
+                <div class="col-md-4 mb-5 pb-5">
+                  <div class="card border-dark mb-3" style="max-width: 30rem;">
+                    <div class="card-body text-dark">
+                      <strong><h3 class="card-title">Current Weather On Mars</h3></strong>
+                      <p class="card-text">{{mars_data.Mars_Weather}}</p>
+                    </div>
+                  </div>
+
+                  <br>
+                  <br>
+                  <br>
+                    <strong><h3 class="mb-5 pb-5">Mars Fact</h3></strong>
+                    <div class="mb-5 pb-5">
+                    <table class="table-bordered table-lg mb-5 pb-5">
+                      {{mars_data.Mars_Fact|safe}}
+                    </table>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+
+            <div class="container mt-5 mb-5">
+              <div class="row">
+                {%for x in mars_data.Mars_Hemisphere%}
+                <div class="col-md-6">
+                  <div class="card border-dark mb-5" style="max-width: 10rem;">
+                    <img class="card-img-top" src="{{x.img_url}}" alt="{{x.title}}"height="550",width="550",padding= 0.2rem>
+                    <div class="card-body"> 
+                      <strong><h4><p class="text-xl-left font-weight-bold text-nowrap"style="width: 8rem;">{{x.title}}</p></h4></strong>
+                    </div> 
+                  </div>
+                </div>
+                {%endfor%}
+                
+              </div>
+            </div>
+</body>
+
+</html>
